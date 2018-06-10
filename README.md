@@ -1,19 +1,20 @@
 # Expand Custom Users as Assignees plugin
-Redmine plugin for adding assignee functionality includes default query and reminder to custom users
+Redmine plugin for adding assignee functionality includes default query and reminder to **Custom Users**.  
+*) **Custom Users** means the users specified in the **Custom field** of the **User** format
 
 This plugin can realize multiple assignees on issues for review tasks by multiple people use case and so on.
-  * send email notifications to users specified in the **Custom field** of the **User** format **when they are added or removed.** on issues.
-  * send reminder to users specified in the **Custom field** of the **User** format
-  * issues that users specified in the **Custom field** of the **User** format are queried as assignees such as **"My page" > "Issues assigned to me"**  
+  * send email notifications to **Custom Users who are added or removed** on issues, or all **Custom Users** as broadcast when **Custom Users** are not changed on issues, as well as authors and assignees.
+  * send reminder to users set in **Custom Users** on issues
+  * issues that **Custom Users** are listed on are queried as assignees such as **"My page" > "Issues assigned to me"**  
     *) Use "just Assignee" field instead to proceed query by the original scope of "assignee".
 
 ## Installation
 
 1. To install the plugin
 
-    `git clone` or copy an unarchived plugin(archived file is [here](https://github.com/hidakatsuya/redmine_default_custom_query/releases)) to `plugins/custom_users_as_assignees` on your Redmine path.
+    `git clone` to `plugins/custom_users_as_assignees` on your Redmine path.
 
-        cd {RAILS_ROOT}/plugins
+        $ cd {RAILS_ROOT}/plugins
         $ git clone https://github.com/preciousplum/custom_users_as_assignees 
 
 2. Restart Redmine.
