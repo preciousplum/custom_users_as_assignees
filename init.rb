@@ -14,10 +14,10 @@ ActionDispatch::Callbacks.to_prepare do
   unless User.included_modules.include? CustomUsersAsAssignees::UserPatch
     User.send :include, CustomUsersAsAssignees::UserPatch
   end
-  unless User.included_modules.include? CustomUsersAsAssignees::IssueQueryPatch
+  unless IssueQuery.included_modules.include? CustomUsersAsAssignees::IssueQueryPatch
     IssueQuery.send :include, CustomUsersAsAssignees::IssueQueryPatch
   end
-  unless User.included_modules.include? CustomUsersAsAssignees::MailerPatch
+  unless Mailer.included_modules.include? CustomUsersAsAssignees::MailerPatch
     Mailer.send :include, CustomUsersAsAssignees::MailerPatch
   end
 
