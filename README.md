@@ -1,4 +1,6 @@
 # Expand Custom Users as Assignees plugin
+[日本語](README_Ja.md)
+
 Redmine plugin for adding assignee functionality includes default query and reminder to **Custom Users**.  
 *) **Custom Users** means the users specified in the **Custom field** of the **User** format
 
