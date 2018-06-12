@@ -16,7 +16,7 @@
 
 1. プラグインのインストール
 
-    実行環境のRedmineパスの`plugins/custom_users_as_assignees`で`git clone`を実行してください。
+    実行環境のRedmineパスの`plugins/custom_users_as_assignees`に対して`git clone`を実行してください。
 
         $ cd {RAILS_ROOT}/plugins
         $ git clone https://github.com/preciousplum/custom_users_as_assignees 
@@ -35,8 +35,11 @@
 https://github.com/Restream/notify_custom_users
 
 ## 画面イメージ
+checkbox_checkallプラグインとともに使用した画面イメージです。
+https://github.com/preciousplum/checkbox_checkall
+
 ![カスタムフィールド設定](assets/images/custom_field_setting.png)  
-![チケット編集](assets/images/edit_issue.png.png)  
+![チケット編集](assets/images/edit_issue.png)  
 ![担当チケット](assets/images/assigned_to_me.png)  
 ![通知メール](assets/images/notification.png)  
 ![リマインダーメール](assets/images/reminder.png)  
