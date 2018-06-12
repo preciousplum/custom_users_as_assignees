@@ -32,3 +32,9 @@ However, this plugin has been tested on Redmine 3.4.5 only currently.
 This plugin was developed based on  notify_custom_users plugin.
 https://github.com/Restream/notify_custom_users
 
+## Screen Images
+![Custom Field Setting](assets/images/custom_field_setting.png)  
+![Edit Issue](assets/images/edit_issue.png.png)  
+![Assigned to me](assets/images/assigned_to_me.png)  
+![Notification](assets/images/notification.png)  
+![Reminder](assets/images/reminder.png)  

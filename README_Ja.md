@@ -34,3 +34,9 @@
 このプラグインは notify_custom_users プラグインを元に開発しています。
 https://github.com/Restream/notify_custom_users
 
+## 画面イメージ
+![カスタムフィールド設定](assets/images/custom_field_setting.png)  
+![チケット編集](assets/images/edit_issue.png.png)  
+![担当チケット](assets/images/assigned_to_me.png)  
+![通知メール](assets/images/notification.png)  
+![リマインダーメール](assets/images/reminder.png)  
