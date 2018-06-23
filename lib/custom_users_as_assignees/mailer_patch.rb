@@ -26,7 +26,6 @@ module CustomUsersAsAssignees
         " AND #{Project.table_name}.status = #{Project::STATUS_ACTIVE}" +
         " AND #{Issue.table_name}.due_date <= ?", days.day.from_now.to_date
       )
-      scope = scope.where(:assigned_to_id => user_ids) if user_ids.present?
       scope = scope.where(:project_id => project.id) if project
       scope = scope.where(:fixed_version_id => target_version_id) if target_version_id.present?
       scope = scope.where(:tracker_id => tracker.id) if tracker
@@ -61,8 +60,10 @@ module CustomUsersAsAssignees
 
       issues_by_assignee.each do |assignee, issues|
         if assignee.is_a?(User) && assignee.active? && issues.present?
-          visible_issues = issues.select {|i| i.visible?(assignee)}
-          reminder(assignee, visible_issues, days).deliver if visible_issues.present?
+          if user_ids.empty? || user_ids.include?(assignee.id.to_s)
+            visible_issues = issues.select {|i| i.visible?(assignee)}
+            reminder(assignee, visible_issues, days).deliver if visible_issues.present?
+          end
         end
       end
     end
