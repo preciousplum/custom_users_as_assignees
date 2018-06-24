@@ -35,8 +35,8 @@
 https://github.com/Restream/notify_custom_users
 
 ## 画面イメージ
-checkbox_checkallプラグインとともに使用した画面イメージです。
-https://github.com/preciousplum/checkbox_checkall
+customfield_checkbox_utilityプラグインとともに使用した画面イメージです。
+https://github.com/preciousplum/customfield_checkbox_utility
 
 ![カスタムフィールド設定](assets/images/custom_field_setting.png)  
 ![チケット編集](assets/images/edit_issue.png)  

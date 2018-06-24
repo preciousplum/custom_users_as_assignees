@@ -33,7 +33,7 @@ This plugin was developed based on  notify_custom_users plugin.
 https://github.com/Restream/notify_custom_users
 
 ## Screen Images
-Here are the images used with checkbox_checkall plugin.  https://github.com/preciousplum/checkbox_checkall
+Here are the images used with customfield_checkbox_utility plugin.  https://github.com/preciousplum/customfield_checkbox_utility
 
 ![Custom Field Setting](assets/images/custom_field_setting.png)  
 ![Edit Issue](assets/images/edit_issue.png)  
