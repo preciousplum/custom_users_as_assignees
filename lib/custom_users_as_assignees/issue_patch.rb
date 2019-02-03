@@ -95,7 +95,7 @@ module CustomUsersAsAssignees
           custom_user_added_ids.uniq!
           custom_user_removed_ids.uniq!
           custom_user_changed_ids = (custom_user_added_ids + custom_user_removed_ids).uniq
-          Principal.find(custom_user_changed_ids)
+          return users_from_ids(custom_user_changed_ids)
         else
           []
         end
