@@ -56,7 +56,26 @@ module CustomUsersAsAssignees
         end
         custom_user_ids = custom_user_values.map(&:value).flatten
         custom_user_ids.reject! { |id| id.blank? }
-        User.find(custom_user_ids)
+#        User.find(custom_user_ids)
+#        Principal.find(custom_user_ids)
+        return users_from_ids(custom_user_ids)
+      end
+
+      def users_from_ids(ids)
+        users = []
+        ids.each do |id|
+          user = User.find_by_id(id)
+          if user
+            users << user
+            next
+          end
+          group = Group.find_by_id(id)
+          if group
+            users += users_from_ids(group.user_ids)
+            next
+          end
+        end
+        return users
       end
 
       # added or removed users selected in custom fields with type 'user'
@@ -76,7 +95,7 @@ module CustomUsersAsAssignees
           custom_user_added_ids.uniq!
           custom_user_removed_ids.uniq!
           custom_user_changed_ids = (custom_user_added_ids + custom_user_removed_ids).uniq
-          User.find(custom_user_changed_ids)
+          Principal.find(custom_user_changed_ids)
         else
           []
         end
