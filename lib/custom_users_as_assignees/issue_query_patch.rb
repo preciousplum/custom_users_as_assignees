@@ -3,7 +3,8 @@
     def self.included(base)      
       base.send :include, InstanceMethods
       base.class_eval do
-        alias_method_chain :initialize_available_filters, :extra_filters
+        alias_method :initialize_available_filters_without_extra_filters, :initialize_available_filters
+        alias_method :initialize_available_filters, :initialize_available_filters_with_extra_filters
       end
     end
     
@@ -47,13 +48,14 @@
         end
 
         int_values = targets.to_s.scan(/[+-]?\d+/).map(&:to_i).join(",")
+        str_values = targets.to_s.scan(/[+-]?\d+/).map(&:to_i).map{ |e| "'#{e}'" }.join(",")
         if int_values.present?
           subquery = "#{Issue.table_name}.id #{ operator == '=' ? 'IN' : 'NOT IN' } "
-          subquery += "(SELECT #{Issue.table_name}.id FROM issues" + 
-            " LEFT OUTER JOIN custom_values ON custom_values.customized_id = issues.id AND custom_values.customized_type = 'Issue'" + 
-            " LEFT OUTER JOIN custom_fields ON custom_fields.id = custom_values.custom_field_id" + 
+          subquery += "(SELECT #{Issue.table_name}.id FROM issues" +
+            " LEFT OUTER JOIN custom_values ON custom_values.customized_id = issues.id AND custom_values.customized_type = 'Issue'" +
+            " LEFT OUTER JOIN custom_fields ON custom_fields.id = custom_values.custom_field_id" +
             " WHERE issues.assigned_to_id IN (#{int_values})" +
-            " OR (custom_fields.field_format = 'user' AND custom_values.value IN (#{int_values}) ) )"
+            " OR (custom_fields.field_format = 'user' AND custom_values.value IN (#{str_values}) ) )"
         end
       end      
       
