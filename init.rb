@@ -1,6 +1,5 @@
 require 'redmine'
-
-ActionDispatch::Callbacks.to_prepare do
+Rails.configuration.to_prepare do
   require_dependency 'project'
   require_dependency 'principal'
   require_dependency 'user'
@@ -25,9 +24,9 @@ end
 
 Redmine::Plugin.register :custom_users_as_assignees do
   name 'Expand Custom Users as Assignees plugin'
-  author 'preciousplum'
+  author 'preciousplum & koledas'
   description 'Redmine plugin for adding assignee functionality includes default query and reminder to custom users'
-  version '0.0.3'
-  url 'https://github.com/preciousplum/custom_users_as_assignees'
+  version '0.0.4'
+  url 'https://github.com/koledas/custom_users_as_assignees'
   author_url 'https://github.com/preciousplum/'
 end
