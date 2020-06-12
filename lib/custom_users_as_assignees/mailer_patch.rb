@@ -5,7 +5,8 @@ module CustomUsersAsAssignees
 
       base.class_eval do
         class << self
-          alias_method_chain :reminders, :custom_users
+          alias_method :reminders_without_custom_users, :reminders
+          alias_method :reminders, :reminders_with_custom_users
         end
       end
     end

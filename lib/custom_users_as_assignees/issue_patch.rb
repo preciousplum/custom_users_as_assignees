@@ -6,10 +6,13 @@ module CustomUsersAsAssignees
       base.send :has_many, :customized, :class_name => 'CustomValue', :foreign_key => 'customized_id'
       base.extend ClassMethods
       base.class_eval do
-        alias_method_chain :notified_users, :custom_users
-        alias_method_chain :visible?, :custom_users
+        alias_method :notified_users_without_custom_users, :notified_users
+        alias_method :notified_users, :notified_users_with_custom_users
+        alias_method :visible_without_custom_users?, :visible?
+        alias_method :visible?, :visible_with_custom_users?
         class << self
-          alias_method_chain :visible_condition, :custom_users
+          alias_method :visible_condition_without_custom_users, :visible_condition
+          alias_method :visible_condition, :visible_condition_with_custom_users
         end
       end
     end
@@ -38,7 +41,7 @@ module CustomUsersAsAssignees
           issues_clause << " INNER JOIN #{CustomValue.table_name} AS cv"
           issues_clause << " ON cv.custom_field_id = cf.id"
           issues_clause << " AND cv.customized_type = 'Issue'"
-          issues_clause << " AND cv.value in (#{user_ids.join(',')})"
+          issues_clause << " AND cv.value in (#{user_ids.map{ |e| "'#{e}'" }.join(',')})"
           issues_clause << " WHERE cf.field_format = 'user'"
           issues_clause << ")"
           issues_clause << " AND (#{prj_clause})" if prj_clause

@@ -26,7 +26,7 @@ This plugin can realize multiple assignees on issues for review tasks by multipl
 
 ## Compatibility
 This plugin version is compatible with Redmine 3.3.0 and later in principle.
-However, this plugin has been tested on Redmine 3.4.5 only currently.
+However, this plugin has been tested on Redmine 4.0.3 only currently.
 
 ## Special Thanks
 This plugin was developed based on  notify_custom_users plugin.
