@@ -41,7 +41,7 @@ module CustomUsersAsAssignees
           issues_clause << " INNER JOIN #{CustomValue.table_name} AS cv"
           issues_clause << " ON cv.custom_field_id = cf.id"
           issues_clause << " AND cv.customized_type = 'Issue'"
-          issues_clause << " AND cv.value in (#{user_ids.map{ |e| '\'#{e}\'' }.join(',')})"
+          issues_clause << " AND cv.value in (#{user_ids.map{ |e| "'#{e}'" }.join(',')})"
           issues_clause << " WHERE cf.field_format = 'user'"
           issues_clause << ")"
           issues_clause << " AND (#{prj_clause})" if prj_clause
