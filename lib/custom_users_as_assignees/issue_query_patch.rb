@@ -1,6 +1,6 @@
-﻿module CustomUsersAsAssignees
+module CustomUsersAsAssignees
   module IssueQueryPatch
-    def self.included(base)      
+    def self.included(base)
       base.send :include, InstanceMethods
       base.class_eval do
         alias_method :initialize_available_filters_without_extra_filters, :initialize_available_filters
@@ -12,11 +12,11 @@
       def initialize_available_filters_with_extra_filters
         return @initialize_available_filters if @initialize_available_filters
         initialize_available_filters_without_extra_filters
- 
+
         add_available_filter("just_assigned_to_id",
           :type => :list_optional, :values => lambda { assigned_to_values }
         )
-        
+
         @initialize_available_filters
 
       end
@@ -28,6 +28,7 @@
           if value.delete("me")
             if User.current.logged?
               value.push(User.current.id.to_s)
+              value += User.current.group_ids.map(&:to_s)
             else
               value.push("0")
             end
@@ -40,7 +41,7 @@
       def sql_for_assigned_to_id_field(field, operator, value)
         targets = value;
         value.each do |target|
-          begin 
+          begin
             targets += User.find(target).group_ids.map(&:to_s)
             targets.uniq!
           rescue
