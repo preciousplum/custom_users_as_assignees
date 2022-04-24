@@ -11,7 +11,7 @@ This plugin can realize multiple assignees on issues for review tasks by multipl
     *) Use "just Assignee" field instead to proceed query by the original scope of "assignee".
 
 ## Use Case Image
-![Custom Field Setting](assets/images/usecase.png)  
+![Use Case Image](assets/images/usecase.png)  
 The recommended operation is keeping a ticket manager in the original Assignee separated from Custom Users assignment.
 
 ## Installation
