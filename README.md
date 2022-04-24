@@ -1,4 +1,4 @@
-# Expand Custom Users as Assignees plugin
+# Expand Custom Users as Assignees plugin for Multiple Assignees
 [日本語](README_Ja.md)
 
 Redmine plugin for adding assignee functionality includes default query and reminder to **Custom Users**.  
@@ -9,6 +9,10 @@ This plugin can realize multiple assignees on issues for review tasks by multipl
   * send reminder to users set in **Custom Users** on issues
   * issues that **Custom Users** are listed on are queried as assignees such as **"My page" > "Issues assigned to me"**  
     *) Use "just Assignee" field instead to proceed query by the original scope of "assignee".
+
+## Use Case Image
+![Custom Field Setting](assets/images/usecase.png)  
+The recommended operation is keeping a ticket manager in the original Assignee separated from Custom Users assignment.
 
 ## Installation
 
